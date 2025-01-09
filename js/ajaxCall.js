@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         req.open("GET", '/api/post/read.php', true);
 
         req.onload = function() {
-            if (req.status >= 200 && req.status < 300) { // Проверка успешного ответа
+            if (req.status >= 200 && req.status < 300) {
                 try {
                     var json = JSON.parse(req.responseText);
 
@@ -58,10 +58,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
 
                     var messageElement = document.getElementsByClassName('message')[0];
-                    if (messageElement) { // Проверка на существование элемента
+                    if (messageElement) {
                         messageElement.innerHTML = html;
                     } else {
-                        console.error("Element with class 'message' not found.");
+                        console.error("Element with class 'message' not found");
                     }
                 } catch (e) {
                     console.error("Error parsing JSON:", e);
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         req.onerror = function() {
-            console.error("Request failed due to network error.");
+            console.error("Request failed due to network error");
         };
 
         req.send();

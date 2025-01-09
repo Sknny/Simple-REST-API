@@ -7,10 +7,12 @@ class Category
     public $id;
     public $name;
     public $created_at;
+
     public function __construct($db)
     {
         $this->conn = $db;
     }
+
     public function read()
     {
         $query = '
@@ -25,6 +27,7 @@ class Category
         $stmt->execute();
         return $stmt;
     }
+
     public function read_single()
     {
         $query = '
@@ -38,10 +41,12 @@ class Category
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $this->id);
         $stmt->execute();
+
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $this->id = $row['id'];
         $this->name = $row['name'];
     }
+
     public function create()
     {
         $query = '
@@ -57,6 +62,7 @@ class Category
         printf("Error: $s.\n", $stmt->error);
         return false;
     }
+
     public function update()
     {
         $query = '
@@ -75,6 +81,7 @@ class Category
         printf("Error: $s.\n", $stmt->error);
         return false;
     }
+    
     public function delete()
     {
         $query = '
